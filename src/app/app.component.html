@@ -1,0 +1,11 @@
+<div class="app-cont">
+    <mat-toolbar class="toolbar mat-elevation-z6">
+        <img src="../assets/bancobice_grande.png">
+        <span class="example-spacer"></span>
+        <button mat-button color="primary" [routerLink]="['/home']">Dashboard</button>
+        <button mat-button color="primary" [routerLink]="['/tasks']">Tareas</button>
+    </mat-toolbar>
+    <section>
+        <router-outlet></router-outlet>
+    </section>
+</div>

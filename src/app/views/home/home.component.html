@@ -1,0 +1,61 @@
+
+<mat-card class="economics-cont">
+    <mat-card-header>
+        <mat-card-title>Valores económicos</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <div class="mat-table-wrapper">
+            <mat-table
+                #table
+                matSort
+                [dataSource]="dataSource"
+                matSortActive="id"
+                matSortDirection="asc"
+                matSortDisableClear
+            >
+
+                <ng-container matColumnDef="key">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+                    <mat-cell *matCellDef="let economics">{{ economics.key }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</mat-header-cell>
+                    <mat-cell *matCellDef="let economics">{{ economics.name }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="value">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Valor</mat-header-cell>
+                    <mat-cell *matCellDef="let economics">{{ economics.value }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="unit">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Unidad</mat-header-cell>
+                    <mat-cell *matCellDef="let economics">{{ economics.unit }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="date">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</mat-header-cell>
+                    <mat-cell *matCellDef="let economics">{{ economics.date*1000 | date:'dd/MM/YYYY' }}</mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            </mat-table>
+
+            <div class="mat-table__message" *ngIf="!loading && dataSource.data.length <= 0">No hay valores</div>
+            <div class="mat-table__message" *ngIf="loading">Espere por favor</div>
+        </div>
+    </mat-card-content>
+
+</mat-card>
+<mat-card class="economics-cont">
+    <mat-card-header>
+        <mat-card-title>Valores históricos del cobre</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <div id="historic"></div>
+    </mat-card-content>
+</mat-card>
